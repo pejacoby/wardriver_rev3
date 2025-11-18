@@ -172,6 +172,9 @@ boolean sb_bw16 = false;
 boolean sb_bw16 = false;
 boolean scanble = true;  // Bluetooth scan preference
 boolean con_ssid_update = false; // update stored WiFi info with cfg.txt values?
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 #define MAX_AUTO_RESET_MS 1814400000
@@ -1271,6 +1274,9 @@ void boot_config(){
   scanble = get_config_bool("scanble", scanble);
 // WiFi SSID/PSK reset in preferences to values in cfg.txt
   con_ssid_update = get_config_bool("con_ssid_update", con_ssid_update);
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
   if (auto_reset_ms != 0){
