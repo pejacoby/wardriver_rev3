@@ -166,16 +166,9 @@ String ota_hostname = "ota.wardriver.uk";
 unsigned long auto_reset_ms = 0;
 float force_lat = 0;
 float force_lon = 0;
-<<<<<<< Updated upstream
-boolean sb_bw16 = false; 
-=======
 boolean sb_bw16 = false;
 boolean scanble = true;  // Bluetooth scan preference
 boolean con_ssid_update = false; // update stored WiFi info with cfg.txt values?
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
 #define MAX_AUTO_RESET_MS 1814400000
 #define MIN_AUTO_RESET_MS 7200000
@@ -1268,16 +1261,10 @@ void boot_config(){
   force_lat = get_config_float("force_lat", force_lat);
   force_lon = get_config_float("force_lon", force_lon);
   sb_bw16 = get_config_bool("sb_bw16", sb_bw16);
-<<<<<<< Updated upstream
-=======
 // BlueTooth scan preference
   scanble = get_config_bool("scanble", scanble);
 // WiFi SSID/PSK reset in preferences to values in cfg.txt
   con_ssid_update = get_config_bool("con_ssid_update", con_ssid_update);
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
   if (auto_reset_ms != 0){
     if (auto_reset_ms > MAX_AUTO_RESET_MS){
