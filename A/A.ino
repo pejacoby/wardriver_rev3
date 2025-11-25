@@ -166,7 +166,9 @@ String ota_hostname = "ota.wardriver.uk";
 unsigned long auto_reset_ms = 0;
 float force_lat = 0;
 float force_lon = 0;
-boolean sb_bw16 = false; 
+boolean sb_bw16 = false;
+boolean con_ssid_update = false; // update stored WiFi info with cfg.txt values?
+
 
 #define MAX_AUTO_RESET_MS 1814400000
 #define MIN_AUTO_RESET_MS 7200000
@@ -1259,6 +1261,8 @@ void boot_config(){
   force_lat = get_config_float("force_lat", force_lat);
   force_lon = get_config_float("force_lon", force_lon);
   sb_bw16 = get_config_bool("sb_bw16", sb_bw16);
+  // WiFi SSID/PSK reset in preferences to values in cfg.txt
+  con_ssid_update = get_config_bool("con_ssid_update", con_ssid_update);
 
   if (auto_reset_ms != 0){
     if (auto_reset_ms > MAX_AUTO_RESET_MS){
@@ -1515,6 +1519,14 @@ void boot_config(){
   fb_psk = get_config_string("fb_psk", fb_psk);
   boolean created_network = false; //Set to true automatically when the fallback network is created.
   
+  // update the stored WiFi information in preferences if requested
+  //  error check better if update is yes and both values are non-null
+  if (con_ssid_update) {
+    preferences.putString("ssid",con_ssid);
+    preferences.putString("psk",con_psk);
+    Serial.println("* Updated saved WiFi");
+  }
+
   boolean is_stable = true; //Currently running beta or stable, set automatically
   //Maybe set this to check for any letters, since normal stable version numbers probably don't have any letters.
   //This should catch rc versions and beta versions though.
